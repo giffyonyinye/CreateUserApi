@@ -29,7 +29,7 @@ namespace CreateUserApi.Services.Implementation
 
                 if (userCount > 0)
                 {
-                    return "User already exists in the database.";
+                    return "User already exists.";
                 }
 
                 var username = githubUser.Username;
