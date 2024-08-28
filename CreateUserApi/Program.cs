@@ -12,6 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IRegister, RegisterService>();
+builder.Services.AddScoped<IGithubUser, GithubService>();
 var app = builder.Build();
 
 

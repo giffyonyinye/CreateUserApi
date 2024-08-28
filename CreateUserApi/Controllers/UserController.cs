@@ -12,12 +12,14 @@ namespace CreateUserApi.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IRegister _register;
+        private readonly IGithubUser _githubUser;
 
 
-        public UserController(IConfiguration configuration, IRegister register)
+        public UserController(IConfiguration configuration, IRegister register, IGithubUser githubUser)
         {
             _configuration = configuration;
             _register = register;
+            _githubUser = githubUser;
         }
 
         [HttpPost]
@@ -25,6 +27,15 @@ namespace CreateUserApi.Controllers
         public async Task<IActionResult> CreateUser(CreateUserDto user)
         {
             var result = await _register.CreateUser(user);
+            return Ok(result);
+
+        }
+
+        [HttpPost]
+        [Route("create-githubuser")]
+        public async Task<IActionResult> GithubUser(GithubUserDto githubUser)
+        {
+            var result = await _githubUser.GithubUser(githubUser);
             return Ok(result);
 
         }
